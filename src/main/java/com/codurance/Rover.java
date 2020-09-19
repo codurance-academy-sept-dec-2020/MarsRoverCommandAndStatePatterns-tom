@@ -1,33 +1,31 @@
 package com.codurance;
 
 import com.codurance.directions.Direction;
+import com.codurance.position.Coordinate;
 
 public class Rover {
-
-  private final int x;
-  private final int y;
+  private Coordinate coordinate;
   private Direction direction;
 
-  public Rover(int x, int y, Direction direction) {
-    this.x = x;
-    this.y = y;
+  public Rover(Coordinate coordinate, Direction direction) {
+    this.coordinate = coordinate;
     this.direction = direction;
   }
 
   public Rover right() {
-    return new Rover(x, y, direction.right());
+    return new Rover(coordinate, direction.right());
   }
 
   public Rover left() {
-    return new Rover(x, y, direction.left());
+    return new Rover(coordinate, direction.left());
   }
 
   public int x() {
-    return x;
+    return this.coordinate.x;
   }
 
   public int y() {
-    return y;
+    return this.coordinate.y;
   }
 
   public String direction() {
@@ -35,6 +33,6 @@ public class Rover {
   }
 
   public Rover move() {
-    return direction.move(x, y);
+    return direction.move(x(), y());
   }
 }

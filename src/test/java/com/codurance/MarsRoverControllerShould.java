@@ -8,6 +8,7 @@ import com.codurance.directions.East;
 import com.codurance.directions.North;
 import com.codurance.directions.South;
 import com.codurance.directions.West;
+import com.codurance.position.Coordinate;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -23,7 +24,8 @@ public class MarsRoverControllerShould {
       "2, 3, W, M, '1:3:W'"
   })
   public void move(int initialX, int initialY, String initialDirection, String commands, String expectedCoordinate) {
-    final MarsRoverController controller = new MarsRoverController(new Rover(initialX, initialY, directionFor(initialDirection)));
+    Coordinate coordinate = new Coordinate(initialX, initialY);
+    final MarsRoverController controller = new MarsRoverController(new Rover(coordinate, directionFor(initialDirection)));
     String actualCoordinate = controller.execute(commands);
 
     assertThat(actualCoordinate, is(expectedCoordinate));
@@ -49,7 +51,8 @@ public class MarsRoverControllerShould {
       "W, RR, E"
   })
   void turn(String initialPosition, String commands, String expectedDirection) {
-    Rover initialRover = new Rover(1, 1, directionFor(initialPosition));
+    Coordinate coordinate = new Coordinate(1, 1);
+    Rover initialRover = new Rover(coordinate, directionFor(initialPosition));
     MarsRoverController controller = new MarsRoverController(initialRover);
     String actualPosition = controller.execute(commands);
     String expectedPosition = "1:1:" + expectedDirection;
@@ -62,7 +65,8 @@ public class MarsRoverControllerShould {
       "1, 2, N, RMRMRMRMM, '1:3:N'",
   })
   void move_and_turn(int initialX, int initialY, String initialDirection, String commands, String expectedCoordinate) {
-    Rover initialRover = new Rover(initialX, initialY, directionFor(initialDirection));
+    Coordinate coordinate = new Coordinate(initialX, initialY);
+    Rover initialRover = new Rover(coordinate, directionFor(initialDirection));
     MarsRoverController controller = new MarsRoverController(initialRover);
     String actualCoordinate = controller.execute(commands);
     assertThat(actualCoordinate, is(expectedCoordinate));

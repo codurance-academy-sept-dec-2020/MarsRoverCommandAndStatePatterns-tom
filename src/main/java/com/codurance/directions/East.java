@@ -1,6 +1,7 @@
 package com.codurance.directions;
 
 import com.codurance.Rover;
+import com.codurance.position.Coordinate;
 
 public class East implements Direction {
 
@@ -24,6 +25,7 @@ public class East implements Direction {
 
   @Override
   public Rover move(int x, int y) {
-    return new Rover(x, y + stepWise, this);
+    Coordinate coordinate = new Coordinate(x, y + stepWise);
+    return new Rover(coordinate, this);
   }
 }
