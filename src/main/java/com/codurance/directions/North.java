@@ -4,6 +4,8 @@ import com.codurance.Rover;
 import com.codurance.position.Coordinate;
 
 public class North extends Direction {
+
+  private static final int MAX_HEIGHT = 10;
   private final String name = "N";
   private int stepWise = 1;
 
@@ -20,7 +22,9 @@ public class North extends Direction {
   }
 
   public Rover move(Coordinate coordinate) {
-    coordinate = new Coordinate(coordinate.x, coordinate.y + stepWise);
+    int y = coordinate.y;
+    y = (y + 1) % MAX_HEIGHT;
+    coordinate = new Coordinate(coordinate.x, y);
     return new Rover(coordinate, this);
   }
 }

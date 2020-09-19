@@ -5,6 +5,7 @@ import com.codurance.position.Coordinate;
 
 public class West extends Direction {
 
+  private static final int MAX_WIDTH = 10;
   private String name = "W";
   private int stepWise = -1;
 
@@ -21,7 +22,9 @@ public class West extends Direction {
   }
 
   public Rover move(Coordinate coordinate) {
-    coordinate = new Coordinate(coordinate.x + stepWise, coordinate.y);
+    int x = coordinate.x;
+    x = (x > 0) ? x + stepWise : MAX_WIDTH - 1;
+    coordinate = new Coordinate(x, coordinate.y);
     return new Rover(coordinate, this);
   }
 }

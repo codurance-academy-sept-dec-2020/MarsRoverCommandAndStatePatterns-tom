@@ -5,8 +5,8 @@ import com.codurance.position.Coordinate;
 
 public class East extends Direction {
 
+  private static final int MAX_WIDTH = 10;
   private String name = "E";
-  private int stepWise = 1;
 
   public Direction left() {
     return new North();
@@ -21,7 +21,9 @@ public class East extends Direction {
   }
 
   public Rover move(Coordinate coordinate) {
-    coordinate = new Coordinate(coordinate.x + stepWise, coordinate.y);
+    int x = coordinate.x;
+    x = (x + 1) % MAX_WIDTH;
+    coordinate = new Coordinate(x, coordinate.y);
     return new Rover(coordinate, this);
   }
 }

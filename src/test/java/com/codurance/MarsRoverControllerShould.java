@@ -15,10 +15,14 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 public class MarsRoverControllerShould {
   Grid grid;
+  Rover rover;
+  MarsRoverController controller;
 
   @BeforeEach
   void setUp() {
     grid = new Grid();
+    rover = new Rover(grid);
+    controller = new MarsRoverController(rover);
   }
 
   @ParameterizedTest
@@ -42,8 +46,6 @@ public class MarsRoverControllerShould {
       "LL, S"
   })
   void turn(String commands, String expectedDirection) {
-    Rover initialRover = new Rover(grid);
-    MarsRoverController controller = new MarsRoverController(initialRover);
     String actualPosition = controller.execute(commands);
     String expectedPosition = "0:0:" + expectedDirection;
     assertThat(actualPosition, is(expectedPosition));
@@ -55,17 +57,16 @@ public class MarsRoverControllerShould {
       "RMRMRMRMM, '0:1:N'",
   })
   void move_and_turn(String commands, String expectedCoordinate) {
-    Rover initialRover = new Rover(grid);
-    MarsRoverController controller = new MarsRoverController(initialRover);
     String actualCoordinate = controller.execute(commands);
     assertThat(actualCoordinate, is(expectedCoordinate));
   }
 
-//  @ParameterizedTest
-//  @CsvSource({
-//
-//  })
-//  void wraps_around_board() {
-//
-//  }
+  @ParameterizedTest
+  @CsvSource({
+    "LMM, '8:0:W'"
+  })
+  void wraps(String commands, String expectedCoordinate) {
+    String actualCoordinate = controller.execute(commands);
+    assertThat(actualCoordinate, is(expectedCoordinate));
+  }
 }
