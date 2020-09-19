@@ -39,7 +39,11 @@ public class MarsRoverControllerShould {
       "S, L, E",
       "S, LL, N",
       "S, R, W",
-      "S, RR, N"
+      "S, RR, N",
+      "W, L, S",
+      "W, LL, E",
+      "W, R, N",
+      "W, RR, E"
   })
   void turn(String initialPosition, String commands, String expectedDirection) {
     Rover initialRover = new Rover(1, 1, directionFor(initialPosition));
