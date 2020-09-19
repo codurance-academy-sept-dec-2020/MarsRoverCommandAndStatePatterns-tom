@@ -1,11 +1,20 @@
 package com.codurance;
 
 import com.codurance.directions.Direction;
+import com.codurance.directions.North;
 import com.codurance.position.Coordinate;
 
 public class Rover {
+
+  private Grid grid;
   private Coordinate coordinate;
   private Direction direction;
+
+  public Rover(Grid grid){
+    this.grid = grid;
+    this.coordinate = new Coordinate(0, 0);
+    this.direction = new North();
+  }
 
   public Rover(Coordinate coordinate, Direction direction) {
     this.coordinate = coordinate;
