@@ -23,4 +23,9 @@ public class South extends Direction {
   public Rover move(Coordinate coordinate, Grid grid) {
     return new Rover(grid.nextSouth(coordinate), this, grid);
   }
+
+  @Override
+  public boolean isSameAs(String direction) {
+    return name().equals(direction);
+  }
 }

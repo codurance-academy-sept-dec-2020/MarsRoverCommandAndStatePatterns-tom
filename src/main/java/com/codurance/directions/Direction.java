@@ -9,4 +9,5 @@ public abstract class Direction {
   public abstract Direction right();
   public abstract String name();
   public abstract Rover move(Coordinate coordinate, Grid grid);
+  public abstract boolean isSameAs(String direction);
 }

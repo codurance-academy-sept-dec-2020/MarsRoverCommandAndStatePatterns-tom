@@ -45,4 +45,8 @@ public class Rover {
   public Rover move() {
     return direction.move(new Coordinate(x(), y()), this.grid);
   }
+
+  public boolean isStopped(Rover rover){
+    return this.coordinate.equals(rover.coordinate) && direction.isSameAs(rover.direction());
+  }
 }

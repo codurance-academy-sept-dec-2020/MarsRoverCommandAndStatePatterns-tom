@@ -23,4 +23,11 @@ public class East extends Direction {
   public Rover move(Coordinate coordinate, Grid grid) {
     return new Rover(grid.nextEast(coordinate), this, grid);
   }
+
+  @Override
+  public boolean isSameAs(String direction) {
+    return name().equals(direction);
+  }
+
+
 }

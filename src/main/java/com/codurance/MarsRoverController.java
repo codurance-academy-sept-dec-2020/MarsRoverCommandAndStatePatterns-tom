@@ -7,14 +7,22 @@ public class MarsRoverController {
   private static final String INTO_CHARACTERS = "";
   private static final String COORDINATE_FORMAT = "%d:%d:%s";
   private Rover rover;
+  boolean isStopped;
 
   public MarsRoverController(Rover rover) {
     this.rover = rover;
+    this.isStopped = false;
   }
 
   public String execute(String input) {
     for (String command : commandsFrom(input)){
+      Rover temp = rover;
       rover = CommandFactory.commandFrom(command).execute(rover);
+      isStopped = rover.isStopped(temp);
+    }
+
+    if(isStopped){
+      return "O:" + formatCoordinate();
     }
 
     return formatCoordinate();

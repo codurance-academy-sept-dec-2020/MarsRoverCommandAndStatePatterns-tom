@@ -9,7 +9,9 @@ import com.codurance.directions.North;
 import com.codurance.directions.South;
 import com.codurance.directions.West;
 import com.codurance.position.Coordinate;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -68,5 +70,14 @@ public class MarsRoverControllerShould {
   void wraps(String commands, String expectedCoordinate) {
     String actualCoordinate = controller.execute(commands);
     assertThat(actualCoordinate, is(expectedCoordinate));
+  }
+
+  @Test
+  void stops_at_obstacle() {
+    grid = new Grid(List.of(new Coordinate(0, 2)));
+    rover = new Rover(grid);
+    controller = new MarsRoverController(rover);
+    String actualCoordinate = controller.execute("MM");
+    assertThat(actualCoordinate, is("O:0:1:N"));
   }
 }
