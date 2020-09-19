@@ -15,13 +15,19 @@ public class MarsRoverController {
   }
 
   public String execute(String input) {
+    String obstacleString = "";
+
     for (String command : commandsFrom(input)){
-      Rover temp = rover;
+      Rover oldRover = rover;
       rover = CommandFactory.commandFrom(command).execute(rover);
-      isStopped = rover.isStopped(temp);
+      obstacleString = isStopped(oldRover);
     }
 
-    return isStopped ? "O:" + formatCoordinate() : formatCoordinate();
+    return new StringBuilder(obstacleString).append(formatCoordinate()).toString();
+  }
+
+  private String isStopped(Rover oldRover) {
+    return this.rover.isStopped(oldRover) ? "O:" : "";
   }
 
   private String formatCoordinate() {
