@@ -16,17 +16,18 @@ public class Rover {
     this.direction = new North();
   }
 
-  public Rover(Coordinate coordinate, Direction direction) {
+  public Rover(Coordinate coordinate, Direction direction, Grid grid) {
     this.coordinate = coordinate;
     this.direction = direction;
+    this.grid = grid;
   }
 
   public Rover right() {
-    return new Rover(coordinate, direction.right());
+    return new Rover(coordinate, direction.right(), this.grid);
   }
 
   public Rover left() {
-    return new Rover(coordinate, direction.left());
+    return new Rover(coordinate, direction.left(), this.grid);
   }
 
   public int x() {
@@ -42,6 +43,6 @@ public class Rover {
   }
 
   public Rover move() {
-    return direction.move(new Coordinate(x(), y()));
+    return direction.move(new Coordinate(x(), y()), this.grid);
   }
 }

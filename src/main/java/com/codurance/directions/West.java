@@ -1,5 +1,6 @@
 package com.codurance.directions;
 
+import com.codurance.Grid;
 import com.codurance.Rover;
 import com.codurance.position.Coordinate;
 
@@ -21,10 +22,10 @@ public class West extends Direction {
     return name;
   }
 
-  public Rover move(Coordinate coordinate) {
+  public Rover move(Coordinate coordinate, Grid grid) {
     int x = coordinate.x;
     x = (x > 0) ? x + stepWise : MAX_WIDTH - 1;
     coordinate = new Coordinate(x, coordinate.y);
-    return new Rover(coordinate, this);
+    return new Rover(coordinate, this, grid);
   }
 }

@@ -1,11 +1,11 @@
 package com.codurance.directions;
 
+import com.codurance.Grid;
 import com.codurance.Rover;
 import com.codurance.position.Coordinate;
 
 public class East extends Direction {
 
-  private static final int MAX_WIDTH = 10;
   private String name = "E";
 
   public Direction left() {
@@ -20,10 +20,7 @@ public class East extends Direction {
     return name;
   }
 
-  public Rover move(Coordinate coordinate) {
-    int x = coordinate.x;
-    x = (x + 1) % MAX_WIDTH;
-    coordinate = new Coordinate(x, coordinate.y);
-    return new Rover(coordinate, this);
+  public Rover move(Coordinate coordinate, Grid grid) {
+    return new Rover(grid.nextEast(coordinate), this, grid);
   }
 }
