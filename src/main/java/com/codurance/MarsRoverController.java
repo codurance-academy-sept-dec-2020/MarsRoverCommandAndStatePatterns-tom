@@ -1,14 +1,30 @@
 package com.codurance;
 
+import com.codurance.commands.CommandFactory;
+
 public class MarsRoverController {
 
-  private final Rover rover;
+  private static final String INTO_CHARACTERS = "";
+  private static final String COORDINATE_FORMAT = "%d %d %s";
+  private Rover rover;
 
   public MarsRoverController(Rover rover) {
     this.rover = rover;
   }
 
   public String execute(String input) {
-    throw new UnsupportedOperationException("Implement me!");
+    for (String command : commandsFrom(input)){
+      rover = new CommandFactory(rover).commandFrom(command).execute();
+    }
+
+    return formatCoordinate();
+  }
+
+  private String formatCoordinate() {
+    return String.format(COORDINATE_FORMAT, rover.x(), rover.y(), rover.direction());
+  }
+
+  private String[] commandsFrom(String input) {
+    return input.split(INTO_CHARACTERS);
   }
 }
