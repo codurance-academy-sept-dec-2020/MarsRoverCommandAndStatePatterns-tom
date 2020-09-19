@@ -29,7 +29,9 @@ public class MarsRoverControllerShould {
   @ParameterizedTest
   @CsvSource({
       "N, R, E",
-      "N, RR, S"
+      "N, RR, S",
+      "N, L, W",
+      "N, LL, S"
   })
   void turn(String initialPosition, String commands, String expectedDirection) {
     Rover initialRover = new Rover(1, 1, directionFor(initialPosition));

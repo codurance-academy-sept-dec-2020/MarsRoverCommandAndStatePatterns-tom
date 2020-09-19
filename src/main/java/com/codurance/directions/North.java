@@ -8,7 +8,7 @@ public class North implements Direction {
 
   @Override
   public Direction left() {
-    throw new UnsupportedOperationException("Implement me!");
+    return new West();
   }
 
   @Override
