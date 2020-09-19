@@ -17,7 +17,9 @@ public class MarsRoverControllerShould {
       "1, 2, N, M, '1:3:N'",
       "1, 3, N, MM, '1:5:N'",
       "1, 3, N, MMMMM, '1:8:N'",
-      "1, 8, S, M, '1:7:S'"
+      "1, 8, S, M, '1:7:S'",
+      "2, 3, E, M, '2:2:E'",
+      "2, 3, W, M, '1:3:W'"
   })
   public void move(int initialX, int initialY, String initialDirection, String commands, String expectedCoordinate) {
     final MarsRoverController controller = new MarsRoverController(new Rover(initialX, initialY, directionFor(initialDirection)));
