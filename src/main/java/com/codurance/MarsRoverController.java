@@ -21,11 +21,7 @@ public class MarsRoverController {
       isStopped = rover.isStopped(temp);
     }
 
-    if(isStopped){
-      return "O:" + formatCoordinate();
-    }
-
-    return formatCoordinate();
+    return isStopped ? "O:" + formatCoordinate() : formatCoordinate();
   }
 
   private String formatCoordinate() {
