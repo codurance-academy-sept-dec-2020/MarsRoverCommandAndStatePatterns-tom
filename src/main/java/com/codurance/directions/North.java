@@ -23,9 +23,6 @@ public class North extends Direction {
   }
 
   public Rover move(Coordinate coordinate, Grid grid) {
-    int y = coordinate.y;
-    y = (y + 1) % MAX_HEIGHT;
-    coordinate = new Coordinate(coordinate.x, y);
-    return new Rover(coordinate, this, grid);
+    return new Rover(grid.nextNorth(coordinate), this, grid);
   }
 }
