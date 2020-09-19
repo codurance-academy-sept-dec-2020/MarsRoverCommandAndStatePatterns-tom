@@ -41,6 +41,18 @@ public class MarsRoverControllerShould {
     assertThat(actualPosition, is(expectedPosition));
   }
 
+  @ParameterizedTest
+  @CsvSource({
+      "1, 2, N, LMLMLMLMM, '1 3 N'",
+      "1, 2, N, RMRMRMRMM, '1 3 N'"
+  })
+  void move_and_turn(int initialX, int initialY, String initialDirection, String commands, String expectedCoordinate) {
+    Rover initialRover = new Rover(initialX, initialY, directionFor(initialDirection));
+    MarsRoverController controller = new MarsRoverController(initialRover);
+    String actualCoordinate = controller.execute(commands);
+    assertThat(actualCoordinate, is(expectedCoordinate));
+  }
+
   private Direction directionFor(String initialDirection) {
     if (initialDirection.equals("N"))
       return new North();
