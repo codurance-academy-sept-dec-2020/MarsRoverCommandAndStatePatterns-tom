@@ -5,7 +5,7 @@ import com.codurance.commands.CommandFactory;
 public class MarsRoverController {
 
   private static final String INTO_CHARACTERS = "";
-  private static final String COORDINATE_FORMAT = "%d %d %s";
+  private static final String COORDINATE_FORMAT = "%d:%d:%s";
   private Rover rover;
 
   public MarsRoverController(Rover rover) {
