@@ -12,6 +12,6 @@ public class EmptyCommand implements Command {
 
   @Override
   public Rover execute() {
-    throw new UnsupportedOperationException("implement me");
+    return rover;
   }
 }

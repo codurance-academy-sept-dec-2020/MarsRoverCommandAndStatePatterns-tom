@@ -4,6 +4,8 @@ import com.codurance.Rover;
 
 public class East implements Direction {
 
+  private String name = "E";
+
   @Override
   public Direction left() {
     throw new UnsupportedOperationException("Implement me!");
@@ -11,12 +13,12 @@ public class East implements Direction {
 
   @Override
   public Direction right() {
-    throw new UnsupportedOperationException("Implement me!");
+    return new South();
   }
 
   @Override
   public String name() {
-    throw new UnsupportedOperationException("Implement me!");
+    return name;
   }
 
   @Override

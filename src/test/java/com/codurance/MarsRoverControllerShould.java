@@ -20,10 +20,23 @@ public class MarsRoverControllerShould {
       "1, 8, S, M, '1 7 S'"
   })
   public void move(int initialX, int initialY, String initialDirection, String commands, String expectedCoordinate) {
-    final MarsRoverController rover = new MarsRoverController(new Rover(initialX, initialY, directionFor(initialDirection)));
-    String actualCoordinate = rover.execute(commands);
+    final MarsRoverController controller = new MarsRoverController(new Rover(initialX, initialY, directionFor(initialDirection)));
+    String actualCoordinate = controller.execute(commands);
 
     assertThat(actualCoordinate, is(expectedCoordinate));
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+      "N, R, E",
+      "N, RR, S"
+  })
+  void turn(String initialPosition, String commands, String expectedDirection) {
+    Rover initialRover = new Rover(1, 1, directionFor(initialPosition));
+    MarsRoverController controller = new MarsRoverController(initialRover);
+    String actualPosition = controller.execute(commands);
+    String expectedPosition = "1 1 " + expectedDirection;
+    assertThat(actualPosition, is(expectedPosition));
   }
 
   private Direction directionFor(String initialDirection) {

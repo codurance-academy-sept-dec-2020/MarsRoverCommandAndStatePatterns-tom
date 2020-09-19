@@ -18,8 +18,8 @@ public class CommandFactory {
     commands = new HashMap<>();
     commands.put(MOVE, new MoveCommand(rover));
     commands.put(LEFT, new TurnLeftCommand(rover));
-    commands.put(LEFT, new TurnRightCommand(rover));
-    commands.put(RIGHT, new EmptyCommand(rover));
+    commands.put(RIGHT, new TurnRightCommand(rover));
+    commands.put(EMPTY, new EmptyCommand(rover));
   }
 
   public Command commandFrom(String command) {
