@@ -8,6 +8,7 @@ import com.codurance.directions.East;
 import com.codurance.directions.North;
 import com.codurance.directions.South;
 import com.codurance.directions.West;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -65,6 +66,14 @@ public class MarsRoverControllerShould {
     MarsRoverController controller = new MarsRoverController(initialRover);
     String actualCoordinate = controller.execute(commands);
     assertThat(actualCoordinate, is(expectedCoordinate));
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+
+  })
+  void wraps_around_board() {
+
   }
 
   private Direction directionFor(String initialDirection) {
