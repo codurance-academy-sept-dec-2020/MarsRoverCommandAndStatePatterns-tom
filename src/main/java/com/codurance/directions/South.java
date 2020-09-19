@@ -6,7 +6,7 @@ import com.codurance.position.Coordinate;
 
 public class South extends Direction {
 
-  private final String name = "S";
+  private final static String name = "S";
 
   public Direction left() {
     return new East();

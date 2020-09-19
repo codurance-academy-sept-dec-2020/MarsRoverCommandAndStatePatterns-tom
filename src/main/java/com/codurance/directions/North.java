@@ -6,9 +6,7 @@ import com.codurance.position.Coordinate;
 
 public class North extends Direction {
 
-  private static final int MAX_HEIGHT = 10;
-  private final String name = "N";
-  private int stepWise = 1;
+  private final static String name = "N";
 
   public Direction left() {
     return new West();
