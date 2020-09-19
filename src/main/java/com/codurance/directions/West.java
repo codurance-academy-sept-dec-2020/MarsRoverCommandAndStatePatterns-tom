@@ -5,6 +5,7 @@ import com.codurance.Rover;
 public class West implements Direction {
 
   private String name = "W";
+  private int stepWise = -1;
 
   @Override
   public Direction left() {
@@ -23,6 +24,6 @@ public class West implements Direction {
 
   @Override
   public Rover move(int x, int y) {
-    throw new UnsupportedOperationException("Implement me!");
+    return new Rover(x + stepWise, y, this);
   }
 }
