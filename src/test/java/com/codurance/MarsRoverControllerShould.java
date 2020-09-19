@@ -70,14 +70,14 @@ public class MarsRoverControllerShould {
     String actualCoordinate = controller.execute(commands);
     assertThat(actualCoordinate, is(expectedCoordinate));
   }
-
-  @ParameterizedTest
-  @CsvSource({
-
-  })
-  void wraps_around_board() {
-
-  }
+//
+//  @ParameterizedTest
+//  @CsvSource({
+//
+//  })
+//  void wraps_around_board() {
+//
+//  }
 
   private Direction directionFor(String initialDirection) {
     if (initialDirection.equals("N"))

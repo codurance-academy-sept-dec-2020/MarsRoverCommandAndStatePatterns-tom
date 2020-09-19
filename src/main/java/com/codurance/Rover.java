@@ -33,6 +33,6 @@ public class Rover {
   }
 
   public Rover move() {
-    return direction.move(x(), y());
+    return direction.move(new Coordinate(x(), y()));
   }
 }
